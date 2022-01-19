@@ -2,7 +2,7 @@
 
 * [iTerm2, of course](https://iterm2.com)
 * install https://pygments.org (my custom `cat` command will use it)
-* iTerm theme: Snazzy
+* iTerm theme: [Snazzy](Snazzy.itermcolors)
 * gitconfig 
     - chame name and email to match yours
     - rename it to `.gitconfig`
