@@ -1,6 +1,3 @@
-# flutter
-export PATH="$PATH:/Users/daniel.bonates/work/flutter/bin"
-
 alias ll='CLICOLOR_FORCE=1 ls -la -G '
 alias h='history'
 alias gs='git status'
