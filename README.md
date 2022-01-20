@@ -26,4 +26,8 @@ Add the following to your .zshrc:
 
 `source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh`
 
+## Nice color scheme for VS Code / Sublime:
+
+Lucario
+
 Done.
