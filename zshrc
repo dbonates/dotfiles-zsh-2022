@@ -52,6 +52,23 @@ concat-img2() {
 
 
 ##############################
+### iOS simulator Helpers
+##############################
+
+appsnap() {
+  sourcefile=$(basename "$1")
+  filename="${sourcefile%.*}"
+  xcrun simctl io booted screenshot "${filename}".png
+}
+
+apprec() {
+  sourcefile=$(basename "$1")
+  filename="${sourcefile%.*}"
+  xcrun simctl io booted recordVideo --codec=h264 "${filename}".mp4
+}
+
+
+##############################
 ### VIDEO TOOLS - using ffmpeg
 ##############################
 
@@ -102,6 +119,22 @@ speeddn() {
   ffmpeg -i ${sourcefile} -r 16 -filter:v "setpts=2*PTS" "${filename}"_slower.mp4
 }
 
+# Remove audio from video
+# Usage: noaudio video_file
+noaudio() {
+  if [ ! -f "$1" ]; then
+    echo "\n:: Especifique um arquivo de video válido.\n";
+    return
+  elif [ -f "$1" ]; then
+    filename1source=$(basename "$1")
+    filename1=$filename1source:t:r
+    extension=$filename1source:t:e
+    finalFilename="${filename1}-na.${extension}"
+    # echo $finalFilename
+    ffmpeg -i $filename1source -c copy -an $finalFilename
+    return;
+  fi
+}
 
 ###########################
 ### CUSTOM PROMPT
