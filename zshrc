@@ -5,6 +5,8 @@ alias gl='git log --oneline'
 
 alias h='history'
 alias ll='ls -la -G'
+alias fixusb='sudo killall -STOP -c usbd'
+
 
 alias gs="git status"
 alias gc="git commit"
@@ -12,6 +14,19 @@ alias gr="git checkout"
 alias ga="git add"
 alias gl="git lola"
 alias glog="git lola"
+
+##############################
+### Caffeinate
+##############################
+
+caff() {
+  if [ -z "$(pgrep 'caffeinate')" ];then caffeinate -dimus &; echo "caffeinate ligado."; else echo "caffeinate já está rodando."; fi
+}
+
+kcaff() {
+  if [ -z "$(pgrep 'caffeinate')" ];then echo "caffeinate já está desligado."; else killall -9 'caffeinate'; echo "caffeinate desligado."; fi
+}
+
 
 # cat command with syntax highlight
 # must have pygments installed
@@ -27,6 +42,7 @@ alias rcatl='pygmentize -g -l ruby -O style=colorful,linenos=1'
 alias -s txt=code
 alias -g gp="grep"
 
+# source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 
 ##############################
@@ -47,7 +63,6 @@ concat-img2() {
   -fill white \
   -pointsize 32  -gravity center \
   "$filename1+$filename2.$extension" 
-
 }
 
 
@@ -66,7 +81,6 @@ apprec() {
   filename="${sourcefile%.*}"
   xcrun simctl io booted recordVideo --codec=h264 "${filename}".mp4
 }
-
 
 ##############################
 ### VIDEO TOOLS - using ffmpeg
@@ -136,6 +150,20 @@ noaudio() {
   fi
 }
 
+cov() {
+  if [ ! -f "$1" ]; then
+    echo "\n:: Parametros invalidos.\n";
+    return
+  elif [ -f "$1" ]; then
+    filename1source=$(basename "$1")
+    filename1=$filename1source:t:r
+    extension=$filename1source:t:e
+    finalFilename="${filename1}-na.${extension}"
+    rsync -avzh --progress daniel.bonates@192.168.0.25:~/work/app-ios app-ios/
+  fi
+  
+}
+
 ###########################
 ### CUSTOM PROMPT
 ###########################
@@ -171,3 +199,5 @@ export PROMPT='%B%F{8}$Time12h%f%b %~ $(git branch &>/dev/null;\
 else \
   echo " '$Yellow''$Color_Off'%B%F{8}\$%f%b "; \
 fi) '
+
+
