@@ -44,6 +44,12 @@ alias -g gp="grep"
 
 # source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+##############################
+### DEEPLINK ON SIMULATOR
+##############################
+dlink() {
+  xcrun simctl openurl booted ${1}
+}
 
 ##############################
 ### IMAGE TOOLS - using magick
