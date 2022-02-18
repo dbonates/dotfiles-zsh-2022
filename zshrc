@@ -48,8 +48,9 @@ alias -g gp="grep"
 ### DEEPLINK ON SIMULATOR
 ##############################
 dlink() {
-  xcrun simctl openurl booted ${1}
+  xcrun simctl openurl booted "$1"
 }
+
 
 ##############################
 ### IMAGE TOOLS - using magick
