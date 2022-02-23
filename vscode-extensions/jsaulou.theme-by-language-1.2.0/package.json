@@ -1,0 +1,98 @@
+{
+	"name": "theme-by-language",
+	"displayName": "Theme by language",
+	"description": "Change the color theme based on the current file language",
+	"version": "1.2.0",
+	"publisher": "jsaulou",
+	"icon": "images/icon.png",
+	"galleryBanner": {
+		"color": "#ff9356",
+		"theme": "dark"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jsaulou/vscode-theme-by-language.git"
+	},
+	"engines": {
+		"vscode": "^1.52.0"
+	},
+	"categories": [
+		"Other",
+		"Themes"
+	],
+	"keywords": [
+		"theme",
+		"dynamic",
+		"file",
+		"type"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./out/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "theme-by-language.setThemeForCurrentFileLanguage",
+				"title": "Set theme for current file language"
+			},
+			{
+				"command": "theme-by-language.setDefaultTheme",
+				"title": "Set default theme"
+			},
+			{
+				"command": "theme-by-language.useDefaultThemeForCurrentFileLanguage",
+				"title": "Use the default theme for current file language"
+			},
+			{
+				"command": "theme-by-language.clearCustomThemesForFileLanguage",
+				"title": "Clear all registered custom themes for file languages"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "theme-by-language.setThemeForCurrentFileLanguage",
+				"key": "shift+alt+t"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Theme by language configuration",
+			"properties": {
+				"theme-by-language.themes": {
+					"type": "object",
+					"description": "Theme to use by language."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.52.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.11.7",
+		"eslint": "^7.15.0",
+		"@typescript-eslint/eslint-plugin": "^4.9.0",
+		"@typescript-eslint/parser": "^4.9.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.1.3",
+		"typescript": "^4.1.2",
+		"vscode-test": "^1.4.1"
+	},
+	"__metadata": {
+		"id": "e5a47a72-5bb1-4139-8080-9c57b37a7e8a",
+		"publisherId": "923f33dd-517d-4bf3-9b96-b0d6e2ba0405",
+		"publisherDisplayName": "Julien Saulou",
+		"isPreReleaseVersion": false,
+		"preRelease": false,
+		"installedTimestamp": 1645139610181
+	}
+}

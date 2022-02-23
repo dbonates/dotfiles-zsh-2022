@@ -1,0 +1,63 @@
+{
+	"name": "lucario",
+	"displayName": "Lucario",
+	"author": {
+		"name": "Yuki Ueda"
+	},
+	"icon": "images/lucario.png",
+	"description": "The best colorful flat theme ever.",
+	"license": "SEE LICENSE IN LICENSE",
+	"scripts": {
+		"attach": "./bootstrap.sh attach",
+		"build": "mkdir -p ./theme && node ./build.js",
+		"eject": "./bootstrap.sh eject",
+		"package": "vsce package -o ./bin/lucario.vsix",
+		"vscode:prepublish": "npm run build"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Ikuyadeu/Lucario-vscode.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Ikuyadeu/Lucario-vscode/issues"
+	},
+	"version": "0.2.0",
+	"publisher": "Ikuyadeu",
+	"engines": {
+		"vscode": "^1.46.0"
+	},
+	"galleryBanner": {
+		"theme": "dark",
+		"color": "#5c98cd"
+	},
+	"categories": [
+		"Themes"
+	],
+	"keywords": [
+		"lucario",
+		"dark",
+		"theme",
+		"color-theme",
+		"blue"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "Lucario",
+				"uiTheme": "vs-dark",
+				"path": "./theme/Lucario-color-theme.json"
+			}
+		]
+	},
+	"devDependencies": {
+		"js-yaml": "^3.14.0",
+		"tinycolor2": "^1.4.1"
+	},
+	"__metadata": {
+		"id": "3ae2b09f-4880-433a-b1b6-b3bb0637d654",
+		"publisherId": "b9ef81dd-63e0-4960-8e98-5b1004f41595",
+		"publisherDisplayName": "Yuki Ueda",
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1642697119377
+	}
+}
