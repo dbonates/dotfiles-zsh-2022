@@ -17,17 +17,5 @@
 
 # Extra
 
-zsh-autosuggestions
+vscode extensions (including themes) should go `into ~/.vscode/extensions` folder.
 
-
-`git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions`
-
-Add the following to your .zshrc:
-
-`source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh`
-
-## Nice color scheme for VS Code / Sublime:
-
-Lucario
-
-Done.
