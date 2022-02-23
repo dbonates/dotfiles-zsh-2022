@@ -1,0 +1,50 @@
+{
+  "workbench.colorTheme": "Lucario",
+  "security.workspace.trust.untrustedFiles": "open",
+  "explorer.confirmDelete": false,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "editor.fontFamily": "JetBrains Mono",
+  "theme-by-language.themes": {
+    "*": "Lucario",
+    "pico-8-lua": "PICO-8",
+    "pico-8": "PICO-8",
+    "pico8p8": "PICO-8"
+  },
+
+  "[markdown]": {
+    "editor.fontFamily": "iA Writer Duospace, monospace",
+    "editor.fontSize": 14,
+    "editor.lineHeight": 0,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 64,
+    "editor.lineNumbers": "on",
+    "editor.quickSuggestions": true,
+    "editor.minimap.enabled": false
+  },
+  "[lua]": {
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontSize": 14,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.lineNumbers": "on",
+    "editor.wordWrapColumn": 64,
+    "editor.quickSuggestions": true,
+    "editor.minimap.enabled": false
+  },
+  "pixelbyte.love2d.path": "/Users/sabrinabonates/daniel/pico-8/alternativas/love-codigos/love.app/Contents/MacOS/love",
+  "pico8vscodeeditor.pico8fullpath": "/Applications/PICO-8.app/Contents/MacOS/pico8",
+  "pico8vscodeeditor.pico8additionalParameters": "-windowed 1",
+  "pico8code.parse.defaultApiVersion": "0.2.4",
+  "[pico8p8]": {
+    "editor.fontFamily": "PICO-8",
+    "editor.fontSize": 12,
+    "editor.lineHeight": 26,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 64,
+    "editor.lineNumbers": "on",
+    "editor.quickSuggestions": true,
+    "editor.minimap.enabled": true
+  },
+  "explorer.confirmDragAndDrop": false
+}
