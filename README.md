@@ -19,9 +19,10 @@
 
 vscode extensions (including themes) should go `into ~/.vscode/extensions` folder.
 
-### Tools, install via homebrew
-htop 
-ncdu 
-tig  
-mc   
-
+### Terminal tools, install via homebrew
+```
+htop - process viewer
+ncdu - disk usage
+tig  - git 'great' gui
+mc   - visual file manager 
+```
