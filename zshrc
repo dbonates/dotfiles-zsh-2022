@@ -51,6 +51,17 @@ dlink() {
   xcrun simctl openurl booted "$1"
 }
 
+mytools() {
+  # All available via homebrew
+  echo ""
+  echo "****************************"
+  echo "  htop - process viewer."
+  echo "  ncdu - disk usage."
+  echo "  tig  - git 'great' gui."
+  echo "  mc   - visual file manager."
+  echo "*****************************"
+  echo ""
+}
 
 ##############################
 ### IMAGE TOOLS - using magick
