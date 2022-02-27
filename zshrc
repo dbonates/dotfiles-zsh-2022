@@ -67,6 +67,26 @@ mytools() {
 ### IMAGE TOOLS - using magick
 ##############################
 
+
+# convert all images of a given type to another
+# while keeping the original on dir
+# ex:
+#    $ conv png jpg
+# will create jpg versions from all png files 
+# on current dir
+ 
+conv() {
+  if [ ! $1 ]; then
+    echo "\n:: Especifique qual formato converter.\n";
+    return
+  elif [ ! $2 ]; then
+    echo "\n:: Especifique o formato de destino.\n";
+    return
+  fi
+  mogrify -format $2 *.$1
+}
+
+
 concat-img2() {
   filename1source=$(basename "$1")
   filename2source=$(basename "$2")
