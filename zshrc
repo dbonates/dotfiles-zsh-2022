@@ -1,12 +1,19 @@
-alias ll='CLICOLOR_FORCE=1 ls -la -G '
+alias ll='CLICOLOR_FORCE=1 ls -alhg -G'
 alias h='history'
 alias gs='git status'
 alias gl='git log --oneline'
+alias sw='git switch'
 
 alias h='history'
-alias ll='ls -la -G'
 alias fixusb='sudo killall -STOP -c usbd'
+alias fixhde='sudo pkill -f fsck'
 
+
+# Deezer download
+# arl: 487fd00bfb7ca50833458456387997ba239ba7ba683c36a412b6f84c98800ec00144df8cf9dbcbc8aee14664826e536ba9379c39ca6492032d4aefe3e55df1047a385c6bfbd67671873549be883552d941124d5c8547c4fe93f9cbd0382f8a20
+alias dzdl='python3 -m deemix'
+
+alias bkpwork='rsync -avzh --progress daniel.bonates@192.168.0.33:~/work work/'
 
 alias gs="git status"
 alias gc="git commit"
@@ -14,6 +21,21 @@ alias gr="git checkout"
 alias ga="git add"
 alias gl="git lola"
 alias glog="git lola"
+
+alias updtnextbkp="rsync -avzh --progress daniel.bonates@192.168.0.26:~/work ~/daniel/work/"
+
+# Remove arquivo lixo do macos
+frml () {
+  find . -name ._.DS_Store | xargs rm -f
+  find . -name .DS_Store | xargs rm -f
+  find . -name ._*.* | xargs rm -f
+  find . -name '._*' | xargs rm -f
+}
+
+
+compressall() {
+  for file in *; do compress $file; done
+}
 
 ##############################
 ### Caffeinate
@@ -27,22 +49,6 @@ kcaff() {
   if [ -z "$(pgrep 'caffeinate')" ];then echo "caffeinate já está desligado."; else killall -9 'caffeinate'; echo "caffeinate desligado."; fi
 }
 
-
-# cat command with syntax highlight
-# must have pygments installed
-# http://pygments.org
-alias ccat='pygmentize -g'
-# with line numbers
-alias ccatl='pygmentize -g -O style=colorful,linenos=1'
-# same but forcing to ruby (Gemfile, Podfile, Fastfile, etc)
-alias rcat='pygmentize -g -l ruby'
-# with line numbers
-alias rcatl='pygmentize -g -l ruby -O style=colorful,linenos=1'
-
-alias -s txt=code
-alias -g gp="grep"
-
-# source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ##############################
 ### DEEPLINK ON SIMULATOR
@@ -59,22 +65,88 @@ mytools() {
   echo "  ncdu - disk usage."
   echo "  tig  - git 'great' gui."
   echo "  mc   - visual file manager."
+  echo "  "
+  echo "****************************"
+  echo "Skyscraper:"
+  echo "gerar midia para uma determinada plataforma:"
+  echo "Skyscraper -p megadrive -s screenscraper"
+  echo "gerar a playlist depois de ter as midias geradas:"
+  echo "Skyscraper -p megadrive"
   echo "*****************************"
   echo ""
 }
+
+# cat command with syntax highlight
+# must have pygments installed
+# http://pygments.org
+alias ccat='pygmentize -g'
+# with line numbers
+alias ccatl='pygmentize -g -O style=colorful,linenos=1'
+# same but forcing to ruby (Gemfile, Podfile, Fastfile, etc)
+alias rcat='pygmentize -g -l ruby'
+# with line numbers
+alias rcatl='pygmentize -g -l ruby -O style=colorful,linenos=1'
+
+alias -s txt=code
+alias -g gp="grep"
+
+
+# source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# kill processes given a partial name
+
+kany(){
+  killall -9 $1
+}
+
+# kill processes given a partial name
+
+klike(){
+  killall -f $1
+}
+
+##############################
+### PICO-8 shortcuts
+##############################
+
+kp8() {
+  if [ -z "$(pgrep 'pico8')" ];then echo "pico8 já está desligado."; else killall -9 'pico8'; echo "pico8 desligado."; fi
+}
+
+# pico-8 run cart
+p8() {
+  if [ ! $1 ]; then
+    echo "\n:: indique um cart valido.\n";
+    return
+  fi
+  /Applications/PICO-8.app/Contents/MacOS/pico8 -windowed 1 -run $1 &
+}
+
+# pico-8 splore
+p8s() {
+  /Applications/PICO-8.app/Contents/MacOS/pico8 -windowed 1 -splore &
+}
+
+# pico-8 console
+p8c() {
+  /Applications/PICO-8.app/Contents/MacOS/pico8 -windowed 1 -splore &
+}
+
+
 
 ##############################
 ### IMAGE TOOLS - using magick
 ##############################
 
 
-# convert all images of a given type to another
-# while keeping the original on dir
-# ex:
-#    $ conv png jpg
-# will create jpg versions from all png files 
-# on current dir
- 
+scjpg() {
+  if [ ! $1 ]; then
+    echo "\n:: Especifique qual arquivo converter.\n";
+    return
+  fi
+  mogrify -format jpg $1
+}
+
 conv() {
   if [ ! $1 ]; then
     echo "\n:: Especifique qual formato converter.\n";
@@ -85,7 +157,6 @@ conv() {
   fi
   mogrify -format $2 *.$1
 }
-
 
 concat-img2() {
   filename1source=$(basename "$1")
@@ -215,7 +286,7 @@ Yellow='\033[33m'
 BYellow="\033[93;5;10m"
 
 
-
+export PATH=$PATH:/Users/sabrinabonates/daniel/pico-8/alternativas/love.app/Contents/MacOS/
 
 Time12h="%D{%H:%M:%S}"
 PathShort="%2~"
@@ -238,4 +309,20 @@ else \
   echo " '$Yellow''$Color_Off'%B%F{8}\$%f%b "; \
 fi) '
 
+mounttip() {
+  # mkdir /Volumes/Linux
+  echo ""
+  echo "***************************************************"
+  echo "diskutil list"
+  echo "sudo mount -t fuse-ext2 /dev/disk3s2 /Volumes/Linux"
+  echo "***************************************************"
+  echo ""
+}
 
+export PATH="/usr/local/opt/qt@5/bin:$PATH"
+export VITASDK=/usr/local/vitasdk
+export PATH=$VITASDK/bin:$PATH
+export PATH=/usr/local/bin:$PATH
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
